@@ -19,4 +19,8 @@ coverage/
 server/__tests__/
 
 
+## Postgres Authentication information
+Postgres_DB/POSTGRES_CRED.js
 
+## CSV loader
+shoes.csv

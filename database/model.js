@@ -10,7 +10,6 @@ const connection = mysql.createConnection({
 promise.promisifyAll(connection);
 
 class Shoe {
-  
   constructor() {
     this.connection = mysql.createConnection({
       user: 'warpv',
@@ -19,7 +18,8 @@ class Shoe {
     });
   }
 
-  addOne(prodSku, priceFull, priceSale, prodCat, prodCols, prodLine, prodName, revsAvg, revsCnt, imgSrc) {
+  addOne(prodSku, priceFull, priceSale, prodCat,
+    prodCols, prodLine, prodName, revsAvg, revsCnt, imgSrc) {
     this.connection.queryAsync(
       'INSERT INTO shoes (product_sku, price_full, price_sale, product_cat, product_colors, product_line, product_name, reviews_avg, reviews_cnt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [prodSku, priceFull, priceSale, prodCat, prodCols, prodLine, prodName, revsAvg, revsCnt],

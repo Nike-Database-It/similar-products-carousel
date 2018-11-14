@@ -57,18 +57,29 @@ click on a product card to navigate to that item's full product page.
     
 # CRUD Server Side Documentation
 
-## GET REQUESTS:
+## MYSQL API
+
+### GET REQUESTS:
 - req.body requirements: [None]
 - Response: Shoe data
 
-## POST REQUESTS:
+### POST REQUESTS:
 - req.body requirements: [product_sku, price_full, price_scale, product_cat, product_colors, product_line, reviews_avg, reviews_cnt, img_src]
 - Response: [None]
 
-## PATCH REQUESTS:
+### PATCH REQUESTS:
 - req.body requirements: [product_sku, col, val]
 - Response: [None]
 
-## DELETE REQUESTS:
+### DELETE REQUESTS:
 - req.body requirements: [product_sku]
 - Response: [None]
+
+
+
+## POSTGRES API
+
+### STARTUP INSTRUCTIONS:
+- Create Postgres database
+- Create User/password for the database
+- Complete POSTGRES_CRED_EXAMPLE.js
