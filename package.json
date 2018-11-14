@@ -19,7 +19,8 @@
     "build": "webpack -d",
     "seed": "node database/seed.js",
     "lint": "eslint --ignore-path .gitignore client/components/** database/** --fix",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "writePhotos": "node ./database/writePhotos.js"
   },
   "repository": {
     "type": "git",
@@ -32,11 +33,13 @@
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "unsplash-js": "^4.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
