@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const csvSeed = () => {
   const start = new Date();
-  const file = fs.createWriteStream('./CSV/shoes6.csv', { encoding: 'utf8', flags: 'a' });
+  const file = fs.createWriteStream('./CSV/shoes.csv', { encoding: 'utf8', flags: 'a' });
   let char;
   let shoeID;
   let priceFull;
@@ -21,7 +21,6 @@ const csvSeed = () => {
   const records = 20 * 1000000;
 
   for (let i = 0; i < records; i += 1) {
-    // id = i + 1 + run;
     shoeID = '';
     for (char = 0; char < 9; char += 1) {
       if (char < 6) {
@@ -46,7 +45,7 @@ const csvSeed = () => {
     img = `https://s3-us-west-1.amazonaws.com/vb-sdc-shoe-photo-bucket/shoes/shoe${Math.floor(Math.random() * 800)}.jpg`;
     output = `${shoeID},${Math.round(priceFull)},${Math.round(priceSale)},${prodCat},${prodCols},${prodLine},${revsAvg},${revsCnt},${img}\n`;
     file.write(output);
-    if ((i+1) % 20000 === 0) {
+    if ((i + 1) % 20000 === 0) {
       console.clear();
       console.log(`${((i / records) * 100).toFixed(2)}% complete...`);
     }

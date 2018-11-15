@@ -1,1 +1,0 @@
-// const Shoes = require('./seeder');
