@@ -23,4 +23,4 @@ server/__tests__/
 Postgres_DB/POSTGRES_CRED.js
 
 ## CSV loader
-shoes.csv
+CSV/*.csv

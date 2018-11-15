@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const csvSeed = () => {
   const start = new Date();
-  const file = fs.createWriteStream('./shoes.csv', { encoding: 'utf8', flags: 'a' });
+  const file = fs.createWriteStream('./CSV/shoes6.csv', { encoding: 'utf8', flags: 'a' });
   let char;
   let shoeID;
   let priceFull;
