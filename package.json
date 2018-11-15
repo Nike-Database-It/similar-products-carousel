@@ -18,7 +18,8 @@
     "watch": "webpack -d --watch",
     "build": "webpack -d",
     "seed": "node database/seed.js",
-    "writeCSV": "node --max-old-space-size=20480 ./csv-seed.js",
+    "writeCSV": "node --max-old-space-size=20480 ./CSV/csv-seed.js",
+    "seedPostgres": "node ./Postgres_DB/seeder.js",
     "lint": "eslint --ignore-path .gitignore client/components/** database/** --fix",
     "test": "jest --detectOpenHandles",
     "writePhotos": "node ./database/writePhotos.js"
@@ -34,6 +35,7 @@
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "knex": "^0.15.2",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4",
@@ -42,6 +44,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "readline": "^1.3.0",
     "sequelize": "^4.41.2",
     "unsplash-js": "^4.8.0"
   },

@@ -1,19 +1,44 @@
-const Sequelize = require('sequelize');
+const Knex = require('knex');
+
 const cred = require('./POSTGRES_CRED');
 
-const sequelize = new Sequelize(cred.database, cred.username, cred.password, {
-  host: 'localhost',
-  dialect: 'postgres',
+const knex = Knex({
+  client: 'pg',
+  connection: {
+    user: cred.username,
+    password: cred.password,
+    database: cred.database,
+  },
 });
 
-const Shoes = sequelize.define('shoes', {
-  product_sku: Sequelize.STRING(20),
-  price_full: Sequelize.SMALLINT,
-  price_sale: Sequelize.SMALLINT,
-  product_cat: Sequelize.SMALLINT,
-  product_colors: Sequelize.SMALLINT,
-  product_line: Sequelize.STRING(40),
-  reviews_avg: Sequelize.DECIMAL(3, 2).UNSIGNED,
-  reviews_cnt: Sequelize.SMALLINT,
-  image_source: Sequelize.STRING(150),
-});
+knex.schema.dropTableIfExists('shoes')
+  .catch((err) => {
+    console.log(err);
+  })
+  .then(() => {
+    knex.schema.createTable('shoes', (table) => {
+      table.increments('id').primary();
+      table.string('product_sku', 20);
+      table.integer('price_full');
+      table.integer('price_sale');
+      table.integer('product_cat');
+      table.integer('product_colors');
+      table.string('product_line', 40);
+      table.decimal('reviews_avg', 5, 2);
+      table.integer('reviews_cnt');
+      table.string('image_source', 150);
+    }).catch((err) => {
+      console.log(err);
+    }).then(() => {
+      const location = '/home/vigneshb/tmp/shoes.csv';
+      const start = new Date();
+      knex.raw(`\copy shoes(product_sku,price_full,price_sale,product_cat,product_colors,product_line,reviews_avg,reviews_cnt,image_source) FROM '${location}' DELIMITER ','`)
+        .catch((err) => {
+          console.log(err);
+        }).then(() => {
+          const end = new Date();
+          console.log(`Took ${end - start} milliseconds to seed Postgres database...`);
+          process.exit();
+        });
+    });
+  });
