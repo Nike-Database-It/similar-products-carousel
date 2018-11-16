@@ -20,6 +20,7 @@
     "seed": "node database/seed.js",
     "writeCSV": "node --max-old-space-size=20480 ./CSV/csv-seed.js",
     "seedPostgres": "node ./Postgres_DB/seeder.js",
+    "createCassandraDB": "node ./Cassandra_DB/seeder.js",
     "lint": "eslint --ignore-path .gitignore client/components/** database/** --fix",
     "test": "jest --detectOpenHandles",
     "writePhotos": "node ./database/writePhotos.js"
@@ -34,6 +35,7 @@
     "babel-preset-es2015": "^6.24.1",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
+    "cassandra-driver": "^3.5.0",
     "express": "^4.16.4",
     "knex": "^0.15.2",
     "morgan": "^1.9.1",

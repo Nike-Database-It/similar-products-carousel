@@ -2,7 +2,8 @@ const fs = require('fs');
 
 const csvSeed = () => {
   const start = new Date();
-  const file = fs.createWriteStream('./CSV/shoes.csv', { encoding: 'utf8', flags: 'a' });
+  const fileNum = 6;
+  const file = fs.createWriteStream(`./CSV/shoes${fileNum}.csv`, { encoding: 'utf8', flags: 'a' });
   let char;
   let shoeID;
   let priceFull;
@@ -43,7 +44,7 @@ const csvSeed = () => {
     revsCnt = Math.floor(Math.random() * 80 - 40);
     revsCnt = revsCnt < 0 ? 0 : revsCnt;
     img = `https://s3-us-west-1.amazonaws.com/vb-sdc-shoe-photo-bucket/shoes/shoe${Math.floor(Math.random() * 800)}.jpg`;
-    output = `${shoeID},${Math.round(priceFull)},${Math.round(priceSale)},${prodCat},${prodCols},${prodLine},${revsAvg},${revsCnt},${img}\n`;
+    output = `${i + ((fileNum - 1) * records) + 1},${shoeID},${Math.round(priceFull)},${Math.round(priceSale)},${prodCat},${prodCols},${prodLine},${revsAvg},${revsCnt},${img}\n`;
     file.write(output);
     if ((i + 1) % 20000 === 0) {
       console.clear();
