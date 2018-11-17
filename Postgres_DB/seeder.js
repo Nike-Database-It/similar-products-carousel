@@ -11,42 +11,13 @@ const knex = Knex({
   },
 });
 
-knex.schema.hasTable('shoes')
-  .then((exists) => {
-    if (!exists) {
-      knex.schema.dropTable('shoes')
-        .catch((err) => {
-          console.log(err);
-        })
-        .then(() => {
-          console.log(">>>>> TABLE 'shoes' DROPPED...");
-          knex.schema.createTable('shoes', (table) => {
-            table.integer('id').primary();
-            table.string('product_sku', 20);
-            table.integer('price_full');
-            table.integer('price_sale');
-            table.integer('product_cat');
-            table.integer('product_colors');
-            table.string('product_line', 40);
-            table.decimal('reviews_avg', 5, 2);
-            table.integer('reviews_cnt');
-            table.string('image_source', 150);
-          }).catch((err) => {
-            console.log(err);
-          }).then(() => {
-            console.log(">>>>> TABLE 'shoes' CREATED...");
-          });
-        });
-    }
+const location = '/home/vigneshb/tmp/shoes6.csv';
+const start = new Date();
+knex.raw(`copy shoes(id,product_sku,price_full,price_sale,product_cat,product_colors,product_line,reviews_avg,reviews_cnt,image_source) FROM '${location}' DELIMITER ','`)
+  .catch((err) => {
+    console.log(err);
   }).then(() => {
-    const location = '/home/vigneshb/tmp/shoes.csv';
-    const start = new Date();
-    knex.raw(`copy shoes(id,product_sku,price_full,price_sale,product_cat,product_colors,product_line,reviews_avg,reviews_cnt,image_source) FROM '${location}' DELIMITER ','`)
-      .catch((err) => {
-        console.log(err);
-      }).then(() => {
-        const end = new Date();
-        console.log(`Took ${end - start} milliseconds to seed Postgres database with 20 million records...`);
-        process.exit();
-      });
+    const end = new Date();
+    console.log(`Took ${end - start} milliseconds to seed Postgres database with 20 million records...`);
+    process.exit();
   });

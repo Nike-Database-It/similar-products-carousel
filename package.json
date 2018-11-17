@@ -20,7 +20,10 @@
     "seed": "node database/seed.js",
     "writeCSV": "node --max-old-space-size=20480 ./CSV/csv-seed.js",
     "seedPostgres": "node ./Postgres_DB/seeder.js",
-    "createCassandraDB": "node ./Cassandra_DB/seeder.js",
+    "createPostgresTable": "node ./Postgres_DB/createTable.js",
+    "postgresQuery": "node ./Postgres_DB/model.js",
+    "createCassandraDB": "node ./Cassandra_DB/createTable.js",
+    "cassandraQuery": "node ./Cassandra_DB/model.js",
     "lint": "eslint --ignore-path .gitignore client/components/** database/** --fix",
     "test": "jest --detectOpenHandles",
     "writePhotos": "node ./database/writePhotos.js"
