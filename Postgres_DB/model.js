@@ -12,7 +12,7 @@ const knex = Knex({
 });
 
 const start = new Date();
-knex.raw('select * from "shoes" where id=19000000')
+knex.raw('select * from "shoes" where id=120000000')
   .catch((err) => {
     console.log(err);
   })
