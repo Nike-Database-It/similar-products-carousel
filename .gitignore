@@ -24,3 +24,6 @@ Postgres_DB/POSTGRES_CRED.js
 
 ## CSV loader
 CSV/*.csv
+
+## NEW RELICE LICENSE KEY
+new_relic/LICENSE_KEY.js
