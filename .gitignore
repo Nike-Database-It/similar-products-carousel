@@ -27,3 +27,6 @@ CSV/*.csv
 
 ## NEW RELICE LICENSE KEY
 new_relic/LICENSE_KEY.js
+
+## ANY PEM FILES
+*.pem
