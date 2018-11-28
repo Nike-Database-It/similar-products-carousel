@@ -7,6 +7,6 @@ export let options = {
 };
 
 export default function() {
-  http.get('http://localhost:3001');
+  http.get('http://localhost:3001/:ABC-123/similar');
   sleep(1);
 }

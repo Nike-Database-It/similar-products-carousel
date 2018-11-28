@@ -37,10 +37,12 @@ app.get('/:product_sku/similar', (req, res) => {
   const randID = Math.floor(Math.random() * 120000000);
   Shoe.getOne(randID, (err1, data1) => {
     if (err1) {
+      console.log(err1);
       res.status(500).send(err1);
     } else {
       Shoe.getImagesOfTwelveSimilar(data1.rows[0].product_cat, (err2, res2) => {
         if (err2) {
+          console.log(err2);
           res.status(500).send(err2);
         } else {
           res.send(res2.rows);

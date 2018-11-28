@@ -5,9 +5,10 @@ const cred = require('./POSTGRES_CRED');
 const knex = Knex({
   client: 'pg',
   connection: {
+    host: '54.183.87.168',
     user: cred.username,
     password: cred.password,
-    database: cred.database,
+    database: 'vb_sdc',
   },
 });
 
